@@ -5,12 +5,14 @@ using LibreHardwareMonitor.Hardware;
 using Microsoft.VisualBasic.Devices;
 using Timer = System.Windows.Forms.Timer;
 using Computer = LibreHardwareMonitor.Hardware.Computer;
+using LibreHardwareMonitor.Hardware.Cpu;
+using HidSharp;
 
 namespace KrakenFanControl
 {
     public partial class FanControl : Form
     {
-        private readonly Computer _computer;
+        private Computer _computer;
         private readonly Timer _timer;
 
         public FanControl()
@@ -21,17 +23,16 @@ namespace KrakenFanControl
             _computer = new Computer
             {
                 IsCpuEnabled = true,
-                IsGpuEnabled = true,
                 IsMemoryEnabled = true,
                 IsMotherboardEnabled = true,
                 IsControllerEnabled = true,
                 IsStorageEnabled = true
             };
             _computer.Open();
-  
+            
 
             _timer = new Timer();
-            _timer.Interval = 5000; // 5 seconds interval
+            _timer.Interval = 1000; // 5 seconds interval
             _timer.Tick += Timer_Tick;
             _timer.Start();
         }
@@ -81,28 +82,60 @@ namespace KrakenFanControl
         private void SetFanSpeed(Computer computer, int fanSpeed)
         {
             // Find the NZXT x73 fans
+            var d = new FanSensorParsor();
+            d.start();
+            d.createControl();
             var hardware = computer.Hardware.FirstOrDefault(hw => hw.Name.Contains("X3"));
             if (hardware != null)
             {
                 hardware.Update();
-                var sensor = hardware.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Temperature);
-                Console.WriteLine($"NZXT X73 냉각수 온도: {sensor.Value} °C");
+                var sensor = hardware.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Control);
+                sensor.Control.SetSoftware(75);
+                Console.WriteLine($"NZXT X73 냉각수 온도: °C");
             }
             bool foundFanSensor = false;
+            var hardwareArray = computer.Hardware;
+            for (int i = 0; i < hardwareArray.Count; i++)
+            {
+                string hardwareName = (hardwareArray[i].Name.Length > 0) ? hardwareArray[i].Name : "Unknown";
+
+                var sensorArray = hardwareArray[i].Sensors;
+                for (int j = 0; j < sensorArray.Length; j++)
+                {
+                    if (sensorArray[j].SensorType == SensorType.Fan)
+                        Console.WriteLine($"NZXT X73 냉각수 온도: °C");
+                    else if (sensorArray[j].SensorType == SensorType.Control)
+                        Console.WriteLine($"NZXT X73 냉각수 온도: °C");
+                }
+
+                var subHardwareArray = hardwareArray[i].SubHardware;
+                for (int j = 0; j < subHardwareArray.Length; j++)
+                {
+                    var subSensorList = subHardwareArray[j].Sensors;
+                    for (int k = 0; k < subSensorList.Length; k++)
+                    {
+                        if (sensorArray[j].SensorType == SensorType.Fan)
+                            Console.WriteLine($"NZXT X73 냉각수 온도: °C");
+                        else if (sensorArray[j].SensorType == SensorType.Control)
+                            Console.WriteLine($"NZXT X73 냉각수 온도: °C");
+                    }
+                }
+
+            }
+
+
             foreach (var hw in computer.Hardware)
             {
                 hw.Update();
-                var fanSensor = hw.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Fan);
-                if (fanSensor != null)
+                var sens = hw.Sensors.Where(s => s.SensorType == SensorType.Control);
+                foreach (var sen in sens)
                 {
-                    Console.WriteLine($"CPU 팬 속도: {fanSensor.Value} RPM");
-                    foundFanSensor = true;
-                    break;
+                    Console.WriteLine($"NZXT X73 냉각수 온도: °C");
                 }
-            }
-            if (foundFanSensor)
-            {
-                Console.WriteLine("CPU 팬 센서를 찾을 수 없습니다.");
+                if (foundFanSensor)
+                {
+                    Console.WriteLine("CPU 팬 센서를 찾을 수 없습니다.");
+                }
             }
 
         }
