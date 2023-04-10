@@ -110,7 +110,7 @@ namespace KrakenFanControl
         private float GetProperFanSpd()
         {
             var nullable_temp = hw._liquid_temp.Value;
-            var minTemp = 28f;
+            var minTemp = 29f;
             var midTemp = 33f;
             var maxTemp = 37f;
             float temp;
