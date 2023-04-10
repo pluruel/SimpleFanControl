@@ -92,10 +92,10 @@ namespace KrakenFanControl
                 {
                     return 100f;
                 }
-                else if (temp < 34)
+                else if (temp < 35)
                 {
-                    var range = 4f;
-                    var rangeRatio = 30f / range; // 25는 34도에서 30도까지의 범위에서 적용할 비율
+                    var range = 5f;
+                    var rangeRatio = 30f / range;
                     var tempInRange = temp - minTemp;
                     var ratio = tempInRange * rangeRatio;
                     var fanSpeed = ratio + 30f;
@@ -103,11 +103,11 @@ namespace KrakenFanControl
                 }
                 else
                 {
-                    var range = maxTemp - 34f;
-                    var rangeRatio = 40f / range; // 45는 40도에서 34도까지의 범위에서 적용할 비율
-                    var tempInRange = temp - 34f;
+                    var range = maxTemp - 35f;
+                    var rangeRatio = 40f / range;
+                    var tempInRange = temp - 35f;
                     var ratio = tempInRange * rangeRatio;
-                    var fanSpeed = ratio + 70f;
+                    var fanSpeed = ratio + 60f;
                     return fanSpeed;
                 }
             }
