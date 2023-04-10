@@ -7,7 +7,16 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>travel_childhood_toy_fan_wind_pinwheel_summer_icon_221894.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="travel_childhood_toy_fan_wind_pinwheel_summer_icon_221894 - 복사.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="travel_childhood_toy_fan_wind_pinwheel_summer_icon_221894.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.2" />

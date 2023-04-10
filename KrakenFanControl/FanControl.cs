@@ -16,7 +16,6 @@ namespace KrakenFanControl
         {
 
             InitializeComponent();
-            trayIcon.Icon = SystemIcons.Application;
             this.FormClosing += FanControl_FormClosing;
         }
 
