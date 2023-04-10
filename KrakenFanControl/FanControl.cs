@@ -20,7 +20,7 @@ namespace KrakenFanControl
             this.FormClosing += FanControl_FormClosing;
         }
 
-       
+
         private string GetString(float? f)
         {
             if (f.HasValue)
@@ -52,8 +52,8 @@ namespace KrakenFanControl
         private void Form1_Load(object sender, EventArgs e)
         {
             trayIcon.Visible = true;
-            
-            
+
+
         }
         private void Exit(object sender, EventArgs e)
         {
@@ -86,7 +86,7 @@ namespace KrakenFanControl
         {
             e.Cancel = true;
             this.Hide();
-        
+
         }
 
         private void maintainer_Tick(object sender, EventArgs e)

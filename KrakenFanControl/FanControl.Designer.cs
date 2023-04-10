@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FanControl));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -51,7 +52,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(32, 35);
+            label1.Location = new Point(40, 42);
             label1.Name = "label1";
             label1.Size = new Size(136, 38);
             label1.TabIndex = 0;
@@ -61,7 +62,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(32, 73);
+            label2.Location = new Point(40, 80);
             label2.Name = "label2";
             label2.Size = new Size(136, 38);
             label2.TabIndex = 0;
@@ -71,7 +72,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(32, 225);
+            label3.Location = new Point(40, 232);
             label3.Name = "label3";
             label3.Size = new Size(176, 38);
             label3.TabIndex = 0;
@@ -81,7 +82,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(32, 263);
+            label4.Location = new Point(40, 270);
             label4.Name = "label4";
             label4.Size = new Size(153, 38);
             label4.TabIndex = 0;
@@ -91,7 +92,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(32, 111);
+            label5.Location = new Point(40, 118);
             label5.Name = "label5";
             label5.Size = new Size(150, 38);
             label5.TabIndex = 0;
@@ -101,7 +102,7 @@
             // 
             fan1Value.AutoSize = true;
             fan1Value.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            fan1Value.Location = new Point(257, 35);
+            fan1Value.Location = new Point(265, 42);
             fan1Value.Name = "fan1Value";
             fan1Value.Size = new Size(137, 38);
             fan1Value.TabIndex = 0;
@@ -111,7 +112,7 @@
             // 
             fan2Value.AutoSize = true;
             fan2Value.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            fan2Value.Location = new Point(257, 73);
+            fan2Value.Location = new Point(265, 80);
             fan2Value.Name = "fan2Value";
             fan2Value.Size = new Size(137, 38);
             fan2Value.TabIndex = 0;
@@ -121,7 +122,7 @@
             // 
             pumpSpdValue.AutoSize = true;
             pumpSpdValue.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            pumpSpdValue.Location = new Point(257, 111);
+            pumpSpdValue.Location = new Point(265, 118);
             pumpSpdValue.Name = "pumpSpdValue";
             pumpSpdValue.Size = new Size(137, 38);
             pumpSpdValue.TabIndex = 0;
@@ -131,7 +132,7 @@
             // 
             cpuTemp.AutoSize = true;
             cpuTemp.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            cpuTemp.Location = new Point(257, 263);
+            cpuTemp.Location = new Point(265, 270);
             cpuTemp.Name = "cpuTemp";
             cpuTemp.Size = new Size(137, 38);
             cpuTemp.TabIndex = 0;
@@ -141,7 +142,7 @@
             // 
             liquidTemp.AutoSize = true;
             liquidTemp.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            liquidTemp.Location = new Point(257, 225);
+            liquidTemp.Location = new Point(265, 232);
             liquidTemp.Name = "liquidTemp";
             liquidTemp.Size = new Size(137, 38);
             liquidTemp.TabIndex = 0;
@@ -171,6 +172,7 @@
             // trayIcon
             // 
             trayIcon.ContextMenuStrip = menus;
+            trayIcon.Icon = (Icon)resources.GetObject("trayIcon.Icon");
             trayIcon.Text = "Fan Monitor";
             trayIcon.Visible = true;
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
@@ -196,6 +198,8 @@
             Controls.Add(label2);
             Controls.Add(fan1Value);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FanControl";
             Text = "FanController";
             menus.ResumeLayout(false);
