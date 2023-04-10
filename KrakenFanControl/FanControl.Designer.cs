@@ -39,8 +39,12 @@
             pumpSpdValue = new Label();
             cpuTemp = new Label();
             liquidTemp = new Label();
-            notifyIcon1 = new NotifyIcon(components);
-            contextMenuStrip1 = new ContextMenuStrip(components);
+            menus = new ContextMenuStrip(components);
+            Show = new ToolStripMenuItem();
+            Quit = new ToolStripMenuItem();
+            trayIcon = new NotifyIcon(components);
+            maintainer = new System.Windows.Forms.Timer(components);
+            menus.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -97,7 +101,7 @@
             // 
             fan1Value.AutoSize = true;
             fan1Value.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            fan1Value.Location = new Point(256, 35);
+            fan1Value.Location = new Point(257, 35);
             fan1Value.Name = "fan1Value";
             fan1Value.Size = new Size(137, 38);
             fan1Value.TabIndex = 0;
@@ -107,7 +111,7 @@
             // 
             fan2Value.AutoSize = true;
             fan2Value.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            fan2Value.Location = new Point(256, 73);
+            fan2Value.Location = new Point(257, 73);
             fan2Value.Name = "fan2Value";
             fan2Value.Size = new Size(137, 38);
             fan2Value.TabIndex = 0;
@@ -117,7 +121,7 @@
             // 
             pumpSpdValue.AutoSize = true;
             pumpSpdValue.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            pumpSpdValue.Location = new Point(256, 111);
+            pumpSpdValue.Location = new Point(257, 111);
             pumpSpdValue.Name = "pumpSpdValue";
             pumpSpdValue.Size = new Size(137, 38);
             pumpSpdValue.TabIndex = 0;
@@ -127,7 +131,7 @@
             // 
             cpuTemp.AutoSize = true;
             cpuTemp.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            cpuTemp.Location = new Point(256, 263);
+            cpuTemp.Location = new Point(257, 263);
             cpuTemp.Name = "cpuTemp";
             cpuTemp.Size = new Size(137, 38);
             cpuTemp.TabIndex = 0;
@@ -137,25 +141,45 @@
             // 
             liquidTemp.AutoSize = true;
             liquidTemp.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            liquidTemp.Location = new Point(256, 225);
+            liquidTemp.Location = new Point(257, 225);
             liquidTemp.Name = "liquidTemp";
             liquidTemp.Size = new Size(137, 38);
             liquidTemp.TabIndex = 0;
             liquidTemp.Text = "Loading...";
             // 
-            // notifyIcon1
+            // menus
             // 
-            notifyIcon1.ContextMenuStrip = contextMenuStrip1;
-            notifyIcon1.Text = "notifyIcon1";
-            notifyIcon1.Visible = true;
+            menus.ImageScalingSize = new Size(24, 24);
+            menus.Items.AddRange(new ToolStripItem[] { Show, Quit });
+            menus.Name = "contextMenuStrip1";
+            menus.Size = new Size(129, 68);
             // 
-            // contextMenuStrip1
+            // Show
             // 
-            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(241, 37);
-            contextMenuStrip1.Items.Add("Show", null, ShowForm);
-            contextMenuStrip1.Items.Add("Exit", null, Exit);
+            Show.Name = "Show";
+            Show.Size = new Size(128, 32);
+            Show.Text = "Show";
+            Show.Click += Show_Click;
+            // 
+            // Quit
+            // 
+            Quit.Name = "Quit";
+            Quit.Size = new Size(128, 32);
+            Quit.Text = "Exit";
+            Quit.Click += Quit_Click;
+            // 
+            // trayIcon
+            // 
+            trayIcon.ContextMenuStrip = menus;
+            trayIcon.Text = "Fan Monitor";
+            trayIcon.Visible = true;
+            trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
+            // 
+            // maintainer
+            // 
+            maintainer.Enabled = true;
+            maintainer.Interval = 1000;
+            maintainer.Tick += maintainer_Tick;
             // 
             // FanControl
             // 
@@ -174,6 +198,7 @@
             Controls.Add(label1);
             Name = "FanControl";
             Text = "FanController";
+            menus.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -190,7 +215,10 @@
         private Label pumpSpdValue;
         private Label cpuTemp;
         private Label liquidTemp;
-        private NotifyIcon notifyIcon1;
-        private ContextMenuStrip contextMenuStrip1;
+        private NotifyIcon trayIcon;
+        private ContextMenuStrip menus;
+        private ToolStripMenuItem Show;
+        private ToolStripMenuItem Quit;
+        private System.Windows.Forms.Timer maintainer;
     }
 }

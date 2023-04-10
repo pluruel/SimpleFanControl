@@ -44,6 +44,11 @@ namespace KrakenFanControl
             hw = null;
         }
 
+        public void refresh_computer()
+        {
+            computer.Accept(this);
+        }
+
         public List<float?> maintain()
         {
             hw.Accept(this);
