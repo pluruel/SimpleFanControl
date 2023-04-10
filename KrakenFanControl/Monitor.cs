@@ -79,7 +79,7 @@ namespace KrakenFanControl
 
                 if (temp < minTemp)
                 {
-                    return 60f;
+                    return 50f;
                 }
                 else if (temp >= maxTemp)
                 {
@@ -91,7 +91,7 @@ namespace KrakenFanControl
                     float rangeRatio = 15f / range;
                     float tempInRange = temp - minTemp;
                     float ratio = tempInRange * rangeRatio;
-                    float pumpSpeed = ratio + 60f;
+                    float pumpSpeed = ratio + 50f;
                     return pumpSpeed;
                 }
                 else
@@ -104,15 +104,15 @@ namespace KrakenFanControl
                     return pumpSpeed;
                 }
             }
-            return 60f;
+            return 50f;
         }
 
         private float GetProperFanSpd()
         {
             var nullable_temp = hw._liquid_temp.Value;
-            var minTemp = 30f;
+            var minTemp = 28f;
             var midTemp = 33f;
-            var maxTemp = 36f;
+            var maxTemp = 37f;
             float temp;
 
             if (nullable_temp.HasValue)
