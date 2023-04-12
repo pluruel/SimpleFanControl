@@ -55,6 +55,7 @@ namespace KrakenFanControl
 
 
             maintainer.Stop();
+            Monitor.GetInstance().stop();
 
             this.FormClosing -= FanControl_FormClosing;
             this.Close();
