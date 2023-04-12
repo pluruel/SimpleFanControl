@@ -1,6 +1,6 @@
 ﻿namespace KrakenFanControl
 {
-    partial class FanControl
+    partial class SimpleFanControl
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FanControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleFanControl));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -173,7 +173,7 @@
             // 
             trayIcon.ContextMenuStrip = menus;
             trayIcon.Icon = (Icon)resources.GetObject("trayIcon.Icon");
-            trayIcon.Text = "Fan Monitor";
+            trayIcon.Text = "Simple FanControl";
             trayIcon.Visible = true;
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
             // 
@@ -183,7 +183,7 @@
             maintainer.Interval = 1000;
             maintainer.Tick += maintainer_Tick;
             // 
-            // FanControl
+            // SimpleFanControl
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -200,8 +200,8 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "FanControl";
-            Text = "FanController";
+            Name = "SimpleFanControl";
+            Text = "Simple FanControl";
             menus.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

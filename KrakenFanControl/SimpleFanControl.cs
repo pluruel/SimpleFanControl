@@ -9,10 +9,10 @@ using HidSharp;
 
 namespace KrakenFanControl
 {
-    public partial class FanControl : Form
+    public partial class SimpleFanControl : Form
     {
 
-        public FanControl()
+        public SimpleFanControl()
         {
 
             InitializeComponent();
@@ -52,8 +52,8 @@ namespace KrakenFanControl
 
         private void Exit(object sender, EventArgs e)
         {
-            
-            
+
+
             maintainer.Stop();
 
             this.FormClosing -= FanControl_FormClosing;
