@@ -14,7 +14,8 @@ namespace KrakenFanControl
         private Computer computer = null;
         private Handler hw = null;
 
-        private Monitor() {
+        private Monitor()
+        {
             computer = new Computer();
             computer.IsCpuEnabled = true;
             computer.IsMotherboardEnabled = true;
@@ -28,13 +29,13 @@ namespace KrakenFanControl
         }
 
         public static Monitor GetInstance()
-        {            
-           if (me == null)
-           {
+        {
+            if (me == null)
+            {
                 me = new Monitor();
-           }
-           
-           return me;
+            }
+
+            return me;
         }
 
         public void stop()
@@ -62,7 +63,7 @@ namespace KrakenFanControl
             status.Add(hw._cpu_temp.Value);
             status.Add(hw._pump_fan_spd.Value);
             status.Add(hw._liquid_temp.Value);
-            
+
             return status;
         }
 
@@ -71,40 +72,29 @@ namespace KrakenFanControl
             var nullable_cpu_temp = hw._cpu_temp.Value;
             if (nullable_cpu_temp.HasValue)
             {
-                float temp = nullable_cpu_temp.Value;
-                float minTemp = 50f;
                 float midTemp = 60f;
-                float maxTemp = 75f;
-
-
-                if (temp < minTemp)
+                float maxTemp = 65f;
+                float temp = nullable_cpu_temp.Value;
+                if (temp < midTemp)
                 {
-                    return 50f;
+                    return 60f;
                 }
                 else if (temp >= maxTemp)
                 {
                     return 100f;
                 }
-                else if (temp < 60f)
-                {
-                    float range = midTemp - minTemp;
-                    float rangeRatio = 15f / range;
-                    float tempInRange = temp - minTemp;
-                    float ratio = tempInRange * rangeRatio;
-                    float pumpSpeed = ratio + 50f;
-                    return pumpSpeed;
-                }
                 else
                 {
                     float range = maxTemp - midTemp;
-                    float rangeRatio = 25f / range; 
+                    float rangeRatio = 40f / range;
                     float tempInRange = temp - midTemp;
                     float ratio = tempInRange * rangeRatio;
-                    float pumpSpeed = ratio + 75f;
+                    float pumpSpeed = ratio + 60f;
                     return pumpSpeed;
                 }
+
             }
-            return 50f;
+            return 60f;
         }
 
         private float GetProperFanSpd()
@@ -151,16 +141,13 @@ namespace KrakenFanControl
             }
         }
 
-
-
-        
         public void VisitComputer(IComputer computer)
         {
         }
 
         public void VisitHardware(IHardware hardware)
         {
-            
+
         }
 
         public void VisitSensor(ISensor sensor) { }

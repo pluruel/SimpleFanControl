@@ -17,6 +17,7 @@ namespace KrakenFanControl
 
             InitializeComponent();
             this.FormClosing += FanControl_FormClosing;
+            this.Shown += (s, e) => Hide();
         }
 
 
@@ -48,20 +49,18 @@ namespace KrakenFanControl
             monitor.refresh_computer();
 
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            trayIcon.Visible = true;
 
-
-        }
         private void Exit(object sender, EventArgs e)
         {
-            trayIcon.Visible = false;
+            
+            
             maintainer.Stop();
 
             this.FormClosing -= FanControl_FormClosing;
             this.Close();
 
+            trayIcon.Visible = false;
+            trayIcon.Dispose();
             Application.Exit();
         }
 
