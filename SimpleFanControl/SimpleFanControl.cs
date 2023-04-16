@@ -14,7 +14,6 @@ namespace KrakenFanControl
 
         public SimpleFanControl()
         {
-
             InitializeComponent();
             this.FormClosing += FanControl_FormClosing;
             this.Shown += (s, e) => Hide();
@@ -43,11 +42,13 @@ namespace KrakenFanControl
 
         private void ShowForm(object sender, EventArgs e)
         {
+            this.TopMost = true;
             this.Show();
             this.WindowState = FormWindowState.Normal;
+            this.TopMost = false;
+
             var monitor = Monitor.GetInstance();
             monitor.refresh_computer();
-
         }
 
         private void Exit(object sender, EventArgs e)
