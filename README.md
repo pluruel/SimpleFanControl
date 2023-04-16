@@ -1,1 +1,1 @@
-"# krakenFanCtrl" 
+# SimpleFanControl
