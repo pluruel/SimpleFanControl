@@ -22,7 +22,10 @@ namespace KrakenFanControl
 
         public ISensor _liquid_temp = null;
         public ISensor _pump_fan_spd = null;
-        
+
+        public ISensor _ram_temp = null;
+        public ISensor _ram2_temp = null;
+
 
 
         private ISensor _pump_ctrl = null;
@@ -82,6 +85,18 @@ namespace KrakenFanControl
                         if (ctrl.Name == "Fan #2")
                         {
                             _cpu_fan_ctrl = ctrl;
+                        }
+                    }
+                    var temps = si.Sensors.Where(s => s.SensorType == SensorType.Temperature);
+                    foreach (var temp in temps)
+                    {
+                        if (temp.Name.Contains("#1"))
+                        {
+                            _ram_temp = temp;
+                        }
+                        else if (temp.Name.Contains("#3"))
+                        {
+                            _ram2_temp = temp;
                         }
                     }
                 }

@@ -1,6 +1,7 @@
 ﻿using LibreHardwareMonitor.Hardware;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,8 @@ namespace KrakenFanControl
             status.Add(hw._cpu_temp.Value);
             status.Add(hw._pump_fan_spd.Value);
             status.Add(hw._liquid_temp.Value);
+            status.Add(hw._ram_temp.Value);
+            status.Add(hw._ram2_temp.Value);
 
             return status;
         }
@@ -97,7 +100,7 @@ namespace KrakenFanControl
             return 60f;
         }
 
-        private float GetProperFanSpd()
+        private float GetLiquidRelatedFanSpd()
         {
             var nullable_temp = hw._liquid_temp.Value;
             var minTemp = 29f;
@@ -139,6 +142,44 @@ namespace KrakenFanControl
             {
                 return 30;
             }
+        }
+
+        private float GetRamTemRelatedFanSpd() {
+            var nullable_temp = hw._ram_temp.Value;
+            var minTemp = 35f;
+            var maxTemp = 50f;
+            float temp;
+
+            if (nullable_temp.HasValue)
+            {
+                temp = nullable_temp.Value;
+                if (temp < minTemp)
+                {
+                    return 30f;
+                }
+                else if (temp >= maxTemp)
+                {
+                    return 100f;
+                }
+                else
+                {
+                    var range = maxTemp - minTemp;
+                    var rangeRatio = 70f / range;
+                    var tempInRange = temp - minTemp;
+                    var ratio = tempInRange * rangeRatio;
+                    var fanSpeed = ratio + 30f;
+                    return fanSpeed;
+                }
+            }
+            else
+            {
+                return 30;
+            }
+        }
+
+        private float GetProperFanSpd()
+        {
+            return Math.Max(GetRamTemRelatedFanSpd(), GetLiquidRelatedFanSpd());
         }
 
         public void VisitComputer(IComputer computer)

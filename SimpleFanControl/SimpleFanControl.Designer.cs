@@ -45,6 +45,10 @@
             Quit = new ToolStripMenuItem();
             trayIcon = new NotifyIcon(components);
             maintainer = new System.Windows.Forms.Timer(components);
+            label6 = new Label();
+            label7 = new Label();
+            ramTemp2 = new Label();
+            ramTemp1 = new Label();
             menus.SuspendLayout();
             SuspendLayout();
             // 
@@ -183,16 +187,60 @@
             maintainer.Interval = 1000;
             maintainer.Tick += maintainer_Tick;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(40, 360);
+            label6.Name = "label6";
+            label6.Size = new Size(175, 38);
+            label6.TabIndex = 0;
+            label6.Text = "RAM2 Temp";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(40, 322);
+            label7.Name = "label7";
+            label7.Size = new Size(175, 38);
+            label7.TabIndex = 0;
+            label7.Text = "RAM1 Temp";
+            // 
+            // ramTemp2
+            // 
+            ramTemp2.AutoSize = true;
+            ramTemp2.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            ramTemp2.Location = new Point(265, 360);
+            ramTemp2.Name = "ramTemp2";
+            ramTemp2.Size = new Size(137, 38);
+            ramTemp2.TabIndex = 0;
+            ramTemp2.Text = "Loading...";
+            // 
+            // ramTemp1
+            // 
+            ramTemp1.AutoSize = true;
+            ramTemp1.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            ramTemp1.Location = new Point(265, 322);
+            ramTemp1.Name = "ramTemp1";
+            ramTemp1.Size = new Size(137, 38);
+            ramTemp1.TabIndex = 0;
+            ramTemp1.Text = "Loading...";
+            // 
             // SimpleFanControl
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(463, 354);
+            ClientSize = new Size(463, 429);
             Controls.Add(pumpSpdValue);
             Controls.Add(label5);
+            Controls.Add(ramTemp1);
             Controls.Add(liquidTemp);
+            Controls.Add(ramTemp2);
             Controls.Add(cpuTemp);
+            Controls.Add(label7);
             Controls.Add(label3);
+            Controls.Add(label6);
             Controls.Add(label4);
             Controls.Add(fan2Value);
             Controls.Add(label2);
@@ -224,5 +272,9 @@
         private ToolStripMenuItem Show;
         private ToolStripMenuItem Quit;
         private System.Windows.Forms.Timer maintainer;
+        private Label label6;
+        private Label label7;
+        private Label ramTemp2;
+        private Label ramTemp1;
     }
 }

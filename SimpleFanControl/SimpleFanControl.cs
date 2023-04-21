@@ -100,6 +100,10 @@ namespace KrakenFanControl
             this.cpuTemp.Text = GetString(status[2]);
             this.pumpSpdValue.Text = GetString(status[3]);
             this.liquidTemp.Text = GetString(status[4]);
+            this.ramTemp1.Text = GetString(status[5]);
+            this.ramTemp2.Text = GetString(status[6]);
+
         }
+
     }
 }
