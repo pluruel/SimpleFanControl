@@ -1,4 +1,4 @@
-namespace KrakenFanControl
+namespace SimpleFanControl
 {
     internal static class Program
     {

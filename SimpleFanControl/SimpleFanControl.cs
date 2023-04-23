@@ -7,7 +7,7 @@ using Timer = System.Windows.Forms.Timer;
 using LibreHardwareMonitor.Hardware.Cpu;
 using HidSharp;
 
-namespace KrakenFanControl
+namespace SimpleFanControl
 {
     public partial class SimpleFanControl : Form
     {

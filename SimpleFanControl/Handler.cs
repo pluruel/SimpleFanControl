@@ -9,7 +9,7 @@ using LibreHardwareMonitor.Hardware;
 using Microsoft.VisualBasic.Devices;
 using Computer = LibreHardwareMonitor.Hardware.Computer;
 
-namespace KrakenFanControl
+namespace SimpleFanControl
 {
     internal class Handler
     {

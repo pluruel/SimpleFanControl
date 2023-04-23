@@ -5,6 +5,11 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleFanControl", "SimpleFanControl\SimpleFanControl.csproj", "{9587C800-F6E1-4439-9A01-A39E1B607FF4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tester", "Tester\Tester.csproj", "{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9587C800-F6E1-4439-9A01-A39E1B607FF4} = {9587C800-F6E1-4439-9A01-A39E1B607FF4}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,13 @@ Global
 		{9587C800-F6E1-4439-9A01-A39E1B607FF4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9587C800-F6E1-4439-9A01-A39E1B607FF4}.Release|x64.ActiveCfg = Release|x64
 		{9587C800-F6E1-4439-9A01-A39E1B607FF4}.Release|x64.Build.0 = Release|x64
+		{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}.Debug|x64.Build.0 = Debug|Any CPU
+		{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61BBC26A-0B3B-4691-9E5F-1095E00CD8F0}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>travel_childhood_toy_fan_wind_pinwheel_summer_icon_221894.ico</ApplicationIcon>
     <Platforms>AnyCPU;x64</Platforms>
+    <StartupObject>SimpleFanControl.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
