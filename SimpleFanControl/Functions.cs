@@ -40,9 +40,9 @@ namespace SimpleFanControl
 
         public static float GetProperFanSpd(float? nullable_temp)
         {
-            var minTemp = 29f;
-            var midTemp = 32f;
-            var maxTemp = 35f;
+            var minTemp = 32f;
+            var midTemp = 35f;
+            var maxTemp = 37f;
             float temp;
 
             if (nullable_temp.HasValue)
